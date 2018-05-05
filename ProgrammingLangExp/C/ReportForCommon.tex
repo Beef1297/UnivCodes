@@ -1,0 +1,206 @@
+\documentclass{jsarticle}
+\begin{document}
+\title{プログラミング言語実験・C言語第三回課題レポート}
+\author{1610096 牛山奎悟}
+\maketitle
+
+\section{common.c の関数の処理内容について}
+\subsection{copy\_table(int dst\_table[8][15], int src\_table[8][15])}
+\begin{enumerate}
+
+  \item  何の処理が実装されてるか\\
+  関数内のコメントにあるとおり, この関数では渡された配列src\_tableの内容をdst\_tableにコピーする.つまりカードテーブルの情報をコピーする処理が実装されている.
+
+  \item  配列をどのように使って処理しているか\\
+  L14: dst\_table[i][j]=src\_table[i][j];
+  とあるように,
+  dst\_table はコピー先の配列として用いられていて, src\_table はカードテーブルの情報が入った source ,コピー元として用いられている.
+
+  \item  何故,機能が実現できてるか\\
+  for文の2重ループを要素全てをさわるように(i\textless 8, j\textless 15)用いることで二次元配列の要素全てを参照することができ,それぞれの要素をコピー先の配列 dst\_table に代入しているのでコピーすることができている.
+\end{enumerate}
+\subsection{clear\_table(int cards[8][15])}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  関数内のコメントにあるとおり, この関数では渡された配列cardsの要素全て0にする,つまりカードテーブルの情報をリセットまたは初期化する処理が実装されている.
+  \item  配列をどのように使って処理しているか\\
+  cards は要素を全て0にするための配列として用いられており,それぞれの要素に0を代入して処理が行われている.
+  \item  何故,機能が実現できてるか\\
+  (1)と同様に for 文の2重ループを要素全てをさわるように(i\textless 8, j\textless 15)用いることで二次元配列の要素全てを参照することができ,
+  L27: cards[i][j]=0; とあるように
+  それぞれの要素に0を代入して機能が実現されている.
+
+\end{enumerate}
+
+\subsection{copy\_cards(int dst\_cards[8][15], int src\_cards[8][15]}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  関数内のコメントにあるとおり,この関数では渡されたカードテーブルの配列src\_cards のカード情報の部分のみをコピーする処理が実装されており,(1),(2)では,カード情報以外の情報も含めたカードテーブルの情報をコピーしていた.
+
+  \item  配列をどのように使って処理しているか\\
+  (1)と同様に,配列dst\_cardsはコピー先の配列として用いられていて, src\_table はカードテーブルの情報が入ったコピー元として,用いられている. また, src\_cards[0][0] \textasciitilde   cards[4][14] までの情報がその添字に対応する配列dst\_cardsにいれられている.
+
+  \item  何故,機能が実現できてるか\\
+  これも,(1)と同様で,１つめのfor文の条件式が i\textless 8 から i\textless 5 に変わっているだけ(cards[5][0] \textasciitilde   は場の状態を示すため)で,それのおかげでカードテーブルのカード情報のみを抽出することが可能になっている.
+\end{enumerate}
+
+
+\subsection{ clear\_cards(int cards[8][15])}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  関数内のコメントにあるように,渡されたカードテーブルのカード情報の部分のみを0にし,それが場のカードテーブルだったら,流れたことを意味し,手札のだったらなにもカードを持っていない状態にできる.
+  \item  配列をどのように使って処理しているか\\
+  L54: cards[i][j]=0; とあるように配列cardsにおけるカードの情報を示す部分(cards[0][0] \textasciitilde   cards[4][14])に対して0が代入されている.
+  \item  何故,機能が実現できてるか\\
+  (2)と同様に,基本的には,for文の2重ループを回しているからで,条件式をi\textless 8 -\textgreater  i\textless 5 に変えることでカード情報の部分のみに0が代入されるように制御できている.
+
+\end{enumerate}
+
+\subsection{diff\_cards(int cards1[8][15], int cards[8][15])}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  関数内のコメントにあるように,引数として渡されたカードテーブルの配列cards2[8][15]に含まれるカードを配列cards1 が持っているかどうか関係なく削除の処理,つまり0を代入する処理が実装されている.(ただし,jokerを除く)
+  \item  配列をどのように使って処理しているか\\
+  配列cards2に対して, カード情報の部分をなぞっていき,もし1があればそれを持つ配列の添字に対応するcards1の要素に0を代入している.
+  \item  何故,機能が実現できてるか\\
+  cards2があるカード持っているというのはカードテーブルにおけるカード情報の部分に1がたっているということで,またその逆で0だということはそのカードを持っていないということだから,1がたっている部分を見つけたらそのカードの情報に対応するcards1の要素を0にすることでcards2にあるカードをcards1から削除するということが実現できている.
+\end{enumerate}
+
+
+\subsection{or\_cards(int cards1[8][15], int cards2[8][15])}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  関数内のコメントにあるように,引数として渡された配列cards2が持っているカードをもう一方の配列cards1に加えるというもので,つまり配列cards2のカードの情報の部分において1または2がたっている場合それに対応するcards1の部分に1を代入するという処理が実装されている.(ただし,jokerが含まれる)
+  \item  配列をどのように使って処理しているか\\
+  配列cards2のカード情報の部分を2重ループでなぞっていき,それぞれの要素をみたとき0より大きかったら1を対応するcards1の要素に代入するという処理をしている.
+  \item  何故,機能が実現できてるか\\
+  (5)ではカードを削除するために0が代入されていたが,カードを持たせてあげるためには1を立ててあげれば良いため,1を代入することで機能が実現できている.
+\end{enumerate}
+
+
+\subsection{and\_cards(int cards1[8][15], int cards[8][15])}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  ビット演算子の AND(\&) のような処理で, 引数として渡された配列cards1が持っているカード(つまりカード情報の部分で1がたっている部分)のうち,配列cards2が持っているカードだけを残す. つまり, あるカードを持っているか否かをみたとき,cards2のカード情報の部分が1かつcards1のカード情報の部分が1だった時,cards1の各要素は1を保つことができる処理が実装されている.
+  \item  配列をどのように使って処理しているか\\
+  配列cards1のcards1[0][0]\textasciitilde  cards1[4][14] と配列cards2のcards2[0][0]\textasciitilde  cards2[4][14]を同時に同じ添字の要素をみていき,もし双方が1だった場合,1を代入し,もしそうでなかったら0を代入するという処理をしている.つまりcards1,cards2として渡されたカードテーブルの情報のカード情報を参照するために配列cards1,cards2は使われている.
+  \item  何故,機能が実現できてるか\\
+  カードを残したい場合は1を代入つまりカードを持った状態を保持し,条件が満たされなかった場合は0を代入することでカードを持っていない状態を保持または,カードを削除するという処理がされているため機能が実現できている.
+
+\end{enumerate}
+
+\subsection{not\_cards(int cards[8][15])}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  この関数では,ビット演算子の NOT(\textasciitilde  ) のような処理(有無を反転するという意味合いで)がされていて,引数として渡された配列cardsがあるカードをもっていた場合はそれを削除し,持っていなかった場合はそのカードを加えるという処理をしている.
+  \item  配列をどのように使って処理しているか\\
+  cards[i][j]と2重ループでカード情報の部分を参照していき,1つまりカードを持っていたら0を代入し削除,0つまりカードを持っていなかったら1を代入してカードを加えるという処理をしている.
+  \item  何故,機能が実現できてるか\\
+  1 だった場合は 0を, 0 だった場合は 1を代入することでカードを持っている状態,持っていない状態を反転することができるため,機能が実現できている.
+
+\end{enumerate}
+
+\subsection{get\_field\_state\_form\_field\_cards(int cards[8][15], state *field\_status)}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  場に出されたカードのテーブルを配列cardsとして受取りそれをみて,何のカードが出されたのか,階段や枚数のしばりはあるのかの情報をfield\_statusにいれ状況を把握する.
+  \item  配列をどのように使って処理しているか\\
+  カードテーブルの配列cardsをwhile文を用いて数の順(3,4,5,...)で各要素を見ていき,出されたカードを発見したときループを抜け,抜けた時(i, j)の示すカードを持っているから,card[i][j+1] をみることで階段かどうか判断している.階段だった場合,cards[i][j]から1がたっている要素の数を数えて階段数を調べて,反対に階段ではない時複数枚同じカードが出されている可能性があるため, L132: for(;i\textless 5;i++) とあるように, cards[i][j]からiを動かし柄に関してカードの有無を見ていくことで,出された枚数を数えている.
+
+  \item  何故,機能が実現できてるか\\
+  階段だった場合(cards[i][j+1]\textgreater 0だった時) field\_status-\textgreater is\_sequence に1を代入し階段数を数えfield\_status-\textgreater orderに階段の中の最小値を代入し強さを知ることができ(革命が起きている時は,階段内の最大値を代入),field\_status-\textgreater suit[i] に1を代入し柄を把握でき,逆に階段ではなかった場合,枚数を数えるため,そのときは,field\_status-\textgreater suit[i] に対応する柄のカードを配列cardsが持っていた場合 1を代入していき出されたカードの柄を全て把握することができ,このときfield\_status-\textgreater orderにjを代入しカードの強さを代入している(そもそもカードが見つからなかった場合は最小値0(革命が起きているときは14)を代入).最後に,field\_status-\textgreater quantity にcountを代入し枚数を記憶(count\textgreater 0なら場にカードがあるということだから,is\_no\_cardを0にする).
+  以上のようにカードテーブルの配列cardsを用いてfield\_statusの各メンバの値を定めることができるため場に出たカードの情報を得るという機能が実現できている.
+
+\end{enumerate}
+
+
+\subsection{get\_field\_state\_from\_own\_cards(int cards[8][15], state *field\_status)}
+\begin{enumerate}
+  \item  何の処理が実装されてるか\\
+  手札のカードテーブルからfield\_statusを得る関数で,手札の枚数,プレイヤーのランク,シートの位置,ジョーカーをもっているかや革命かどうか,しばりかどうかの情報も得られる.
+  \item 配列をどのように使って処理しているか\\
+  主に,引数として渡された手札のカードテーブルの配列cardsのcards[5][]\textasciitilde  cards[7][]の部分カード情報ではない部分が用いられる.その要素に1がたっているかどうかや,そのまま値をstatusのメンバに代入するために使われ処理されている.
+  \item 何故,機能が実現できてるか\\
+  カードテーブルには,カード情報だけではなく,革命が起きているかやプレイヤーのランクなど,場やプレイヤーの情報が入っているためそれぞれの情報を参照し,それに応じてfield\_statusをセットすることで機能が実現されている.
+\end{enumerate}
+
+
+\subsection{remove\_low\_card(int cards[8][15], int num, int rev)}
+\begin{enumerate}
+  \item 何の処理が実装されてるか\\
+  出せないカードは引数として渡された配列cards内で0にセットしてしまうという処理.
+  \item 配列をどのように使って処理しているか\\
+  基準値numから下(または上)の配列cardsの部分は全て0を代入するというような処理をしている.
+  \item 何故,機能が実現できてるか\\
+  引数として,基準値num, 革命が起きているか否かのrevを受け取ることで革命が起きていない(rev = 0)ならnum以下の数つまりcards[][num]\textasciitilde  cards[][0]を0にして,革命が起きている(rev = 1)なら,num以上つまりcards[][num]\textasciitilde  cards[][14]を0にしているため出せないカードは0にセットするという機能が実現できている.
+\end{enumerate}
+
+
+\subsection{remove\_suit(int cards[8][15], int suit[5], int flag)}
+\begin{enumerate}
+  \item 何の処理が実装されてるか\\
+  マークのしばりが発生している時,出すことのできないマークのカードの部分を0にする.
+  \item 配列をどのように使って処理しているか\\
+  suit[i]=0だったとき引数として渡されたカードテーブルの配列cards[i][]の各要素に0を代入するという処理をしている.
+  \item 何故,機能が実現できてるか\\
+  引数としてsuit[5], flagがあり前者には出せるマークがセットされていて,後者はしばりが起こっているかどうかのフラグがセットされている.そして,(suit[i]+flag)\%2により,suit[i]が0のときcards[i][0]\textasciitilde  cards[i][14]に0が代入される.こうして出せないマークのカードの部分を0にすることができる.
+
+\end{enumerate}
+
+\subsection{count\_cards(int cards[8][15])}
+\begin{enumerate}
+  \item 何の処理が実装されてるか\\
+  引数として渡されたカードテーブルの配列cardsに含まれているカードの数を求める
+  \item 配列をどのように使って処理しているか\\
+  cards[i][j]!=0 として各マークと数のカードが含まれているかどうか評価するのにつかわれている.
+  \item 何故,機能が実現できてるか\\
+  カードが含まれている場合,カードテーブルの配列の対応する部分が1になっているから.
+\end{enumerate}
+
+\section{select\_cards.cの関数の処理内容について}
+\subsection{select\_change\_cards(int out\_cards[8][15],int my\_cards[8][15],int num\_of\_change)}
+\begin{enumerate}
+  \item  関数では何が実装されてるか.\\
+  大富豪または貧民がカードを渡すときに適したカードを選ぶ機能が実装されている.
+  \item 配列をどのように使って処理しているか.\\
+  引数としては手札のカード配列my\_cards,サーバー側に渡すための配列out\_cards,渡すカードの枚数num\_of\_changeが渡されている.一時的に操作するための配列としてone\_cards[8][15]を定義(clear\_table()で初期化),search\_low\_card()でmy\_cardsの中のカードのうちjokerを除いて小さいほうからカードを一枚選び,one\_cardにコピーする.そして,diff\_cardsでコピーしたカードをmy\_cardsから削除する,最後にor\_cardsでone\_cardが持っているカードをコピーする.これをnum\_of\_change回だけ繰り返す.
+  つまり,one\_cardはmy\_cardsから抽出したカードを記録しておくために使われ,out\_cardsはサーバー側に渡すために最終的なカードの状態を覚えるために使われている.
+  \item 該当するソースコードの記述で何故機能が実現できているか.\\
+  search\_low\_cardで手札のうち最も小さいカードを選ぶことができ,diff\_cards,or\_cardsで提出配列に渡すカードをまるで移したかのような処理が可能になっているから.
+
+\end{enumerate}
+
+\subsection{select\_submit\_cards(int out\_cards[8][15],int my\_cards[8][15], state *field\_status)}
+
+\begin{enumerate}
+  \item 関数では何が実装されてるか.\\
+  手札から場に出すカードを選ぶ機能が実装されている.
+  \item  配列をどのように使って処理しているか\\
+  (1)と引数の配列は同じ意味.field\_statusで場にカードがあるか否かを把握できる.また,out\_cardsにコピーするために一時的に情報を覚えておく配列selectcardsを定義する.そして,elect\_cards\_free(), select\_cards\_restrict(), select\_cards\_free\_rev(), select\_cards\_restrict\_rev()を用いてselect\_cardsに出すカードを手札からコピーし,最終的に,copy\_table()を用いて,select\_cardsの状態をout\_cardsにコピーしている.
+  \item  該当するソースコードの記述で何故機能が実現できているか.\\
+  field\_statusを使うことにより,現在場で革命が起きているかどうか,場にカードがでているかどうか,しばりなどがあるかどうか判別することができ,それに応じてカードを選ぶ関数を変えることができているため,この機能が実現できている.
+\end{enumerate}
+
+\subsection{select\_cards\_free(int select\_cards[8][15], int my\_cards[8][15], state *field\_status)}
+
+\begin{enumerate}
+  \item  関数では何が実装されてるか.\\
+  何もしばりなど無いとき,手札の最も弱いカード(jokerを除く)を一枚select\_cardsにコピーする機能が実装されている
+  \item 配列をどのように使って処理しているか\\
+  手札とコピーする先の配列を渡され,手札の配列my\_cardsの中から最も弱いカードを探しそれをselect\_cardsにコピーするためserch\_low\_card()に渡している.
+  \item 該当するソースコードの記述で何故機能が実現できているか.\\
+  search\_low\_card()で手札のうち最も弱いカードを選択することができるから.
+\end{enumerate}
+
+\subsection{select\_cards\_restrict(int select\_cards[8][15], int my\_cards[8][15], state *field\_status)}
+
+\begin{enumerate}
+  \item 関数では何が実装されてるか.\\
+  (3)とは逆にしばりがあるときに出せるカードを手札から選ぶ機能が実装されている.
+  \item 配列をどのように使って処理しているか\\
+  同じように渡された配列と自分の手札の代わりに操作をする手札のコピーの配列tmp\_cardsを用いて,階段なら階段の,柄なら柄の出せないカードを削除する関数にtmp\_cardsを渡し,最終的にその中から小さいカードをselect\_cardsにコピーしている.
+  \item 該当するソースコードの記述で何故機能が実現できているか.\\
+  field\_statusのメンバの,is\_sequenceやis\_lock, quantitiy, suit, orderによって場が階段なのか,ペアのしばりか,柄のしばりなのか判断することができるからである.
+\end{enumerate}
+
+\end{document}

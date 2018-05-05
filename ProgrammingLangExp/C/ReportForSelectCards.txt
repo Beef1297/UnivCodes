@@ -1,0 +1,45 @@
+\section{select\_cards.cの関数の処理内容について}
+\subsection{select\_change\_cards(int out\_cards[8][15],int my\_cards[8][15],int num\_of\_change)}
+\begin{enumerate}
+  \item関数では何が実装されてるか.\\
+  大富豪または貧民がカードを渡すときに適したカードを選ぶ機能が実装されている.
+  \item配列をどのように使って処理しているか.\\
+  引数としては手札のカード配列my\_cards,サーバー側に渡すための配列out\_cards,渡すカードの枚数num\_of\_changeが渡されている.一時的に操作するための配列としてone\_cards[8][15]を定義(clear\_table()で初期化),search\_low\_card()でmy\_cardsの中のカードのうちjokerを除いて小さいほうからカードを一枚選び,one\_cardにコピーする.そして,diff\_cardsでコピーしたカードをmy\_cardsから削除する,最後にor\_cardsでone\_cardが持っているカードをコピーする.これをnum\_of\_change回だけ繰り返す.
+  つまり,one\_cardはmy\_cardsから抽出したカードを記録しておくために使われ,out\_cardsはサーバー側に渡すために最終的なカードの状態を覚えるために使われている.
+  \item該当するソースコードの記述で何故機能が実現できているか.\\
+  search\_low\_cardで手札のうち最も小さいカードを選ぶことができ,diff\_cards,or\_cardsで提出配列に渡すカードをまるで移したかのような処理が可能になっているから.
+
+\end{enumerate}
+
+\subsection{select\_submit\_cards(int out\_cards[8][15],int my\_cards[8][15], state *field\_status)}
+
+\begin{enumerate}
+  \item関数では何が実装されてるか.\\
+  手札から場に出すカードを選ぶ機能が実装されている.
+  \item配列をどのように使って処理しているか\\
+  (1)と引数の配列は同じ意味.field\_statusで場にカードがあるか否かを把握できる.また,out\_cardsにコピーするために一時的に情報を覚えておく配列selectcardsを定義する.そして,elect\_cards\_free(), select\_cards\_restrict(), select\_cards\_free\_rev(), select\_cards\_restrict\_rev()を用いてselect\_cardsに出すカードを手札からコピーし,最終的に,copy\_table()を用いて,select\_cardsの状態をout\_cardsにコピーしている.
+  \item該当するソースコードの記述で何故機能が実現できているか.\\
+  field\_statusを使うことにより,現在場で革命が起きているかどうか,場にカードがでているかどうか,しばりなどがあるかどうか判別することができ,それに応じてカードを選ぶ関数を変えることができているため,この機能が実現できている.
+\end{enumerate}
+
+\subsection{select\_cards\_free(int select\_cards[8][15], int my\_cards[8][15], state *field\_status)}
+
+\begin{enumerate}
+  \item関数では何が実装されてるか.\\
+  何もしばりなど無いとき,手札の最も弱いカード(jokerを除く)を一枚select\_cardsにコピーする機能が実装されている
+  \item配列をどのように使って処理しているか\\
+  手札とコピーする先の配列を渡され,手札の配列my\_cardsの中から最も弱いカードを探しそれをselect\_cardsにコピーするためserch\_low\_card()に渡している.
+  \item該当するソースコードの記述で何故機能が実現できているか.\\
+  search\_low\_card()で手札のうち最も弱いカードを選択することができるから.
+\end{enumerate}
+
+\subsection{select\_cards\_restrict(int select\_cards[8][15], int my\_cards[8][15], state *field\_status)}
+
+\begin{enumerate}
+  \item関数では何が実装されてるか.\\
+  (3)とは逆にしばりがあるときに出せるカードを手札から選ぶ機能が実装されている.
+  \item配列をどのように使って処理しているか\\
+  同じように渡された配列と自分の手札の代わりに操作をする手札のコピーの配列tmp\_cardsを用いて,階段なら階段の,柄なら柄の出せないカードを削除する関数にtmp\_cardsを渡し,最終的にその中から小さいカードをselect\_cardsにコピーしている.
+  \item該当するソースコードの記述で何故機能が実現できているか.\\
+  field\_statusのメンバの,is\_sequenceやis\_lock, quantitiy, suit, orderによって場が階段なのか,ペアのしばりか,柄のしばりなのか判断することができるからである.
+\end{enumerate}
