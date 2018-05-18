@@ -1,0 +1,18 @@
+#!/bin/csh
+
+foreach prog (Oyako OyakoProtected OyakoOverRide OyakoOverRideSuper ConstructorErr ConstructorSuperErr HelloFrame Photographer)
+echo compiling $prog
+javac $prog.java
+echo "-------"
+echo Displaying ${prog}.java
+cat -n ${prog}.java
+echo "-------"
+if (-e ${prog}.class) then 
+  echo running $prog
+  java $prog 
+else
+endif
+echo "-------------------------"
+echo 次のプログラムを実行するには enter を押して下さい．
+bash -c read
+end

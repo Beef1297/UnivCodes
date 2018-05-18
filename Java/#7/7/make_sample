@@ -1,0 +1,37 @@
+#!/bin/csh
+foreach prog (ObserverFrame)
+echo compiling $prog
+javac $prog.java
+echo running $prog
+java $prog
+echo "-------------------------"
+end
+
+foreach prog (NumberFrame ClockFrame)
+echo running $prog
+java $prog
+echo "-------------------------"
+end
+
+foreach prog (DrawFrame)
+echo compiling $prog
+javac $prog.java
+echo running $prog
+java $prog
+echo "-------------------------"
+end
+
+foreach prog (DrawFrame2)
+echo running $prog
+java $prog
+echo "-------------------------"
+end
+
+foreach prog (Editor MoveByKeyFrame)
+echo compiling $prog
+javac $prog.java
+echo running $prog
+java $prog
+echo "-------------------------"
+end
+
