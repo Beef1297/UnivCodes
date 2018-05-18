@@ -12,7 +12,7 @@ void select_change_cards(int out_cards[8][15],int my_cards[8][15],int num_of_cha
   */
   int count=0;
   int one_card[8][15];
-  
+
   clear_table(out_cards);
   while(count<num_of_change){
     search_low_card(one_card,my_cards,0);
@@ -24,7 +24,7 @@ void select_change_cards(int out_cards[8][15],int my_cards[8][15],int num_of_cha
 
 void select_submit_cards(int out_cards[8][15],int my_cards[8][15], state *field_status){
   int select_cards[8][15];
-  
+
   clear_table(select_cards);
 
   if(field_status->is_rev==0){
@@ -46,15 +46,12 @@ void select_submit_cards(int out_cards[8][15],int my_cards[8][15], state *field_
 
 void select_cards_free(int select_cards[8][15], int my_cards[8][15], state *field_status){
   int info_table[8][15];
-  int i,j,flag = 0;
   clear_table(info_table);
   make_info_table(info_table, my_cards);
-  
   if(search_low_sequence(select_cards, info_table) == 1);//階段追加のときここだけ追加
   else if(search_low_pair(select_cards, info_table, my_cards) == 1);
   else search_low_card(select_cards,my_cards,0);
   // 手持ちの一番弱いカードを単騎で提出する
-    
 }
 
 void select_cards_restrict(int select_cards[8][15], int my_cards[8][15], state *field_status){
@@ -62,7 +59,7 @@ void select_cards_restrict(int select_cards[8][15], int my_cards[8][15], state *
   int info_table[8][15];
   int i,j,count = 0;
   clear_table(info_table);
-  copy_table(tmp_cards, my_cards); 
+  copy_table(tmp_cards, my_cards);
   if(field_status->is_sequence==1){ // 場が階段のとき
     if(field_status->is_lock==1){ // 場が縛られている(マークの話)
       printf("field order(seq lock): %d\n",field_status->order);
@@ -92,26 +89,26 @@ void select_cards_restrict(int select_cards[8][15], int my_cards[8][15], state *
       //出せるペアを持っていてその枚数が場の枚数より多い時は出すようにする
       //マークは0に近い方を出さない
       for(j=0;j < 14;j++){
-	if(info_table[4][j] > field_status->quantity){
-	  for(i=0;i < 4 && (info_table[4][j] - field_status->quantity)>0;i++){
-	    if(tmp_cards[i][j] == 1){
-	      tmp_cards[i][j] = 0;
-	      info_table[4][j]--;
-	    }
-	  }
-	}
+        if(info_table[4][j] > field_status->quantity){
+          for(i=0;i < 4 && (info_table[4][j] - field_status->quantity)>0;i++){
+            if(tmp_cards[i][j] == 1){
+              tmp_cards[i][j] = 0;
+              info_table[4][j]--;
+            }
+          }
+        }
       }
       if(search_low_pair(select_cards, info_table, tmp_cards))
-	printf("found pair!\n");
+      printf("found pair!\n");
     }
   }else{ // 場が単騎のとき
     if(field_status->is_lock==1){ // 場が縛られている
       remove_suit(tmp_cards, field_status->suit, 1);
-      remove_low_card(tmp_cards, field_status->order, 0); 
-      search_low_card(select_cards,tmp_cards,1); 
+      remove_low_card(tmp_cards, field_status->order, 0);
+      search_low_card(select_cards,tmp_cards,1);
     }else{ // 場が縛られていない
-      remove_low_card(tmp_cards, field_status->order, 0); 
-      search_low_card(select_cards,tmp_cards,1); 
+      remove_low_card(tmp_cards, field_status->order, 0);
+      search_low_card(select_cards,tmp_cards,1);
     }
   }
 }
@@ -127,4 +124,3 @@ void operate_my_cards(int my_cards[8][15], state *field_status){
 
 void operate_field_cards(int ba_cards[8][15], state *field_status){
 }
-

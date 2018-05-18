@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <script type="text/javascript">
+
+    var year = new Array(0,0);
+    var month = new Array(0,0);
+    var date = new Array(0,0);
+    year[0] = prompt("開始の年を入力してください.","2018");
+    month[0] = prompt("開始の月を入力してください.","8");
+    date[0] = prompt("開始の日付を入力してください.","12");
+    year[1] = prompt("終了の年を入力してください.","2018");
+    month[1] = prompt("終了の月を入力してください.","9");
+    date[1] = prompt("終了の日付を入力してください.","11");
+    var st = new Date(year[0],month[0],date[0]);
+    var ed = new Date(year[1],month[1],date[1]);
+    document.writeln("開始日は"+st.getFullYear()+"年"+st.getMonth()+"月"+st.getDate()+"日;");
+    document.writeln("終了日は"+ed.getFullYear()+"年"+ed.getMonth()+"月"+ed.getDate()+"日;");
+    var diff = parseInt((ed-st)/86400000);
+    document.writeln("経過日数: "+diff);
+    window.alert("経過日数は"+diff);
+  </script>
+ </head>
+ <body>
+ </body>
+</html>
