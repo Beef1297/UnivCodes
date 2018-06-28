@@ -1,14 +1,17 @@
 # UnivCodes
 大学の課題などに関係するコードや、自主的に取り組んだプロジェクトのまとめ
 
-# Java
-Java を使ってグループでDrop_Number というゲームを作成した。
-そのソースコード  
+## Java
+Java を使ってグループでDrop_Number というゲームを作成した。そのソースコード  
+`groupP/kansei/` 以下のファイルが完成形( いつか jar ファイルに... ), `java GameMain` でゲームスタート
 
-# ProgrammingLangExp
-プログラミング言語実験のソースコード 
+## ProgrammingLangExp
+プログラミング言語実験のソースコード  
+* C: サーバーとクライアントを使った、大貧民ゲームの実装 (まだ改善余地あり,完全に実装し終わったわけではない)
+* javascript: js の基本を学んだ
+	* json などまだ学ぶべきことは多い
 
-# The2ndGradeExecises
+## The2ndGradeExecises
 C codes of the 2nd grade class.  
 * 1: C言語 I/O について
 * 2: 文字列操作など
