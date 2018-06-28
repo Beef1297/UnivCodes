@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>kadai2-3</title>
+    <script type="text/javascript">
+      <!--
+	  /*画像が読み込まれたらstartmoveを呼びsetIntervalが始まる,文字列と数値の処理をして10pxずつ増やしていき400pxまで達したらclearIntervalする*/
+	  var timer=null;
+      function automove(){
+      var keep;
+      keep = parseInt(document.images["image"].style.left);
+      keep += 10;
+      document.images["image"].style.left = keep + "px"
+      if(keep>= 400)clearInterval(timer);
+      
+      }
+      function startmove(){
+      timer = setInterval(automove, 100);
+      }
+      -->
+    </script>
+  </head>
+  <body >
+    <img src="imgGreece1.jpg" name="image" style="position:absolute;left:0px;top:50px" onload="startmove()">
+    
+  </body>
+</html>

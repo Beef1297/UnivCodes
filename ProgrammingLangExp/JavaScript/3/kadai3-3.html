@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8"/>
+			<title>kadai</title>
+			<style type="text/css">
+				</style>
+			<script type="text/javascript">
+				<!--
+						function disimg(){
+							var selected = document.fim.images.selectedIndex;//選択された画像に対応するindex番号が入ってる
+							if(selected > 0)document.img.src = document.fim.images.options[selected].value;
+							//src をオプションのvalue に変えてしまうことで画像を変えることができている
+						}
+				//-->
+				</script>
+		</head>
+		<body>
+			<img src="imgGreece1.jpg" name="img">
+			<p>
+			<form name="fim">
+				<!-- size=1 としてドロップダウンリスト表示-->
+				<select name="images" onchange="disimg()" size="1">
+					<option>select a image
+					<option	value="imgGreece1.jpg">imgGreece1.jpg
+					<option	value="imgGreece2.jpg">imgGreece2.jpg
+					<option value="imgGreece3.jpg">imgGreece3.jpg
+				</select>
+			</form>
+			</p>
+		</body>
+	</html>
+

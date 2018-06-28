@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8"/>
+    <title>kadai2-1</title>
+    <style type = "text/css">
+      td{ text-text-align: left; padding: 0.4em; border: solid 1px black }
+      th  { font-weight: normal; text-align: center; padding: 0.4em }
+      table{ text-align: center; letter-spacing: 0.05em; margin: 20px; border-collapse: collapse }
+    </style>
+  </head>
+  <body>
+    <style type = "text/javascript">
+     
+      var th,se,fir,i;
+      document.write("<table><th><td>8^2の位</td><td>8^1の位</td><td>8^0の位</td></th>");
+	for(i=0;i < 50;i++){
+		    th = Math.floor(Math.random()*8);
+		    se = Math.floor(Math.random()*8);
+		    fir = Math.floor(Math.random()*8);
+		    documnet.write("<tr><td>"+th+"</td><td>"+se+"</td><td>"+fir+"</td></tr>");
+		    }
+		    
+	
+	  
+	 
+      </style>
+  </body>
+</html>

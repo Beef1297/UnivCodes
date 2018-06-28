@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>kadai2-2</title>
+    <script type="text/javascript">
+      <!--
+	  function setposition(l, t){
+	  document.images["myimg"].style.left = l;
+	  document.images["myimg"].style.top = t;
+	  }
+	-->
+    </script>
+  </head>
+  <body>
+    
+    <img src="imgGreece1.jpg" name="myimg" style="position:absolute;left:200px;top:400px">
+    <a href="javascript:setposition (50, 100)">画像を(50, 100)に移動</a>
+    <a href="javascript:setposition (100, 200)">画像を(100, 200)に移動</a>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html　>
+  <head>
+    <meta charset = "utf-8"/>
+  <title>kadai1-6</title>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+      /*全体の流れは,buttonがクリックされることでstartまたはstopの関数が呼ばれスライドショーが始まったり止まったりする. スライドショー自体はヒントを参考にif文を使って制御した.*/
+  var timer = null;
+  var n = 0;
+  function slide(){
+    if(n == 0){
+    document.myImg.src = "img1.png";
+    }else if(n == 1){  
+    document.myImg.src = "img2.png";
+    }else{  
+    document.myImg.src = "img3.png";
+    }
+    n = (n+1)%3;
+  }
+  function start(){
+  timer = setInterval(slide, 3000);
+  }
+  function stop(){
+  clearInterval(timer);
+  }
+  document.write('<img src = "img1.png" name = "myImg"><br>');
+  document.write("<button onclick='start();'>スライドショーを始める</button>");
+  document.write("<button onclick='stop();'>スライドショーを止める</button>");
+  
+  -->
+  </script>
+</body>
+</html>

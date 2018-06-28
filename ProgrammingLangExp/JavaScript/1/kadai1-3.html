@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+  <title> kadai 1-3</title>
+  <style type = "text/css">
+    <!-- 課題ページのcssをコピペした-->
+    td{ text-text-align: left; padding: 0.4em; border: solid 1px black }
+    th  { font-weight: normal; text-align: center; padding: 0.4em }
+    table{ text-align: center; letter-spacing: 0.05em; margin: 20px; border-collapse: collapse }
+    </style>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+  var n = prompt("enter any number", "2"),m = prompt("enter any number","3");
+  var np,mp,sum,i;
+  /*数字を入力してもらい, tableをつくる*/
+  /*必要なところで,色を#f0f0f0で指定する*/
+  document.write("<table border = 1 > <tr bgcolor = #f0f0f0> <th> べき数 </th> <th> "+n+" </th> <th> "+m+" </th> <th> Sum </th> </tr>");//header
+  for(i=0;i <= 5;i++){
+  /*for文でpowを使い段々とべき数を求める*/
+    np = Math.pow(n,i);
+    mp = Math.pow(m,i);
+    sum = np+mp;
+    document.write("<tr> <td bgcolor = #f0f0f0>"+i+"</td><td>"+np+"</td> <td>"+mp+"</td><td>"+sum+"</td></tr>");
+  }
+  document.write("</table>")
+   -->
+  </script>
+</body>
+</html>

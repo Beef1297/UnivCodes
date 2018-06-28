@@ -3,19 +3,22 @@
   <head>
     <title>課題1-2</title>
     <script type = "text/javascript">
-      var str = new String(prompt("何か文字列を入力","電気通信大学ニコニコ大学株式会社"));
-      var key = new String(prompt("keywordを入力","大学"));
+      <!--
+      var str = new String(prompt("enter any strings","uec is a university. uec"));
+      var key = new String(prompt("keyword","uec"));
       var nstr = new Array();
       var iex,i = 0,num=0;
-      document.writeln("入力文字列: "+str+","+"keyword:"+key);
+      document.writeln("\t entered string:"+str+"\t"+"\tkeyword:"+key+"<br>");
+
       while((iex = str.indexOf(key,i)) != -1){
       nstr[num] =str.substring(i, iex)
       num++;
       i = iex + key.length;
       }
-      nstr[num++] = str.substring(i, str.length);
-      document.writeln("keywordの個数:"+num+"新しい文字列:");
+      nstr[num] = str.substring(i, str.length);
+      document.writeln("the number of keyword: "+num+"<br> new strings:"+"\n");
       for(var j=0;j != num;j++)document.writeln(nstr[j]);
+      //-->
     </script>
   </head>
   <body>

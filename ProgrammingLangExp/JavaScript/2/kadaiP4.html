@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"\>
+	<title>kadaiP4</title>
+	<script type="text/javascript">
+		var newwindow;
+		function newtab(){
+			newwindow = window.open("eigeSea.html","エーゲ海","scrollbars:1");
+		}
+		function closetab(){
+			newwindow.close();
+		}
+
+	</script>
+</head>
+<body>
+	<img src="imgGreece1.jpg" name="img1" width="640" height="478" style="position:absolute;left: 100px:top: 50px">
+	<br>
+	<form>
+		<input type="button" value="エーゲ海" onclick="newtab()" style="position:absolute;left:110px;top:600px">
+		<input type="button" value="閉じる" onclick="closetab()" style="position:absolute;left:200px;top:600px">
+	</form>
+
+
+</body>
+</html>

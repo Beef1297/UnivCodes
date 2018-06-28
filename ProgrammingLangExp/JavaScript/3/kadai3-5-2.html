@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8"/>
+			<title>kadai</title>
+			<style type="text/css">
+				</style>
+			<script type="text/javascript">
+				<!--
+				function setDate(){
+				var today = new Date();
+				var LDay = new Date(2019,1,1,0,0,0,0);
+				//2019年の始まりであり、2018年がちょうど終わった時
+				var D = parseInt((LDay - today)/1000);
+				//ミリセカンドは別に考えなくてよい気がするので秒にしてしまう.
+				var dhms = new Array();
+				//day,hour,minutes,second => dhms
+				var converter = [60, 60, 24];
+				//秒から分、時、日の順に直していくときに割っていく数
+				//つまり (second /60 /60 /24) みたいなこと
+				var div = 1;
+				//割る数
+				//最終的に日にしたいわけだから,converterの要素数だけ回す
+				//配列dhmsにはdayから入れたいからデクリメントを用いている
+				for(i=converter.length-1;i >= 0;i--){
+					div = 1;
+					for(j=0;j<=i;j++) div *= converter[j];
+					//順に割っていくということができないため、毎回div=1として
+					//単位変換のための割る数を求めている
+					//日を求めるためには60*60*24で割らないといけない
+					dhms[i] = parseInt(D/div);
+					//ミリセカンドは考えないため、整数にしてしまう。
+					D %= div;
+					//余りから、次の桁の数を求めるから
+				}
+				document.getElementById("date").innerText = "2018年はあと"+dhms[2]+"日"+dhms[1]+"時間"+dhms[0]+"分"+D+"秒";
+				//idからinnerTextをもちいてページに残り時間を表示
+				}
+				function start(){
+					var timer = setInterval(setDate, 1000);
+					//一秒ずつ繰り返す
+				}
+				-->
+				</script>
+		</head>
+		<body onload="start()">
+			<p>
+			<div>↓今年の残り時間↓</div>
+			<!--id を使って文字を設定するためタグだけ用意-->
+			<div id="date"></div>
+			</p>
+			<p>
+				<input type="button" value="ページを閉じる" onmousedown="window.close()">
+				</p>
+		</body>
+	</html>
+

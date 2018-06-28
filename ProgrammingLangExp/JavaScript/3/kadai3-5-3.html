@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8"/>
+			<title>kadai</title>
+			<style type="text/css">
+				</style>
+		</head>
+		<body onload="start()">
+			<script type="text/javascript">
+				function changeBG(){
+					var rand = Math.round(Math.random()*3);
+					//乱数を1-3の範囲で求める
+					//1-red, 2-blue, 3-green とした.
+					if(rand==1){document.bgColor = "red";
+					}else if(rand == 2){document.bgColor = "blue";
+					}else{ document.bgColor = "green";
+					}
+				}
+				function start(){
+					var timer = setInterval(changeBG, 3000);
+					//3秒ごとに色変更
+				}
+			</script>
+			<input type="button" value="ページを閉じる" onmousedown="window.close()">
+		</body>
+	</html>
+

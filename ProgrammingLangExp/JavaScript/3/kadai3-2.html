@@ -1,0 +1,66 @@
+<html>
+ <head>
+	 <meta charset="utf-8"/>
+  <script type="text/javascript">
+		<!--
+    function scrclr () {
+      for (i=0; i<document.tstform.length; i++) {
+         if (document.tstform.elements[i].type != "button") {
+            document.tstform.elements[i].value = "";
+            }
+      }
+      document.tstform.english.focus ( );
+    }
+    function cave () {
+		var pE,pM;
+		var CD= ["秀","優", "良", "可", "不可"];
+    //成績を全て配列に入れてしまう
+		pE=parseInt(document.tstform.english.value);
+		pM=parseInt(document.tstform.mathmatics.value);
+    //ちゃんと数が入力されたか判定し、整数にちゃんと変換されていなかったらアラート
+    if(isNaN(pE) || isNaN(pM)){
+      window.alert("enter appropriate number");
+    }else{
+      //数学と英語の点数をそれぞれpM pE に整数に変換して代入
+      //成績の種類だけループを回す
+      document.tstform.credit_E.value = CD[0];
+      document.tstform.credit_M.value = CD[0];
+      //100点以上のときはif文に引っかからないためあらかじめ秀を入れておく
+		  for(i=0;i<CD.length;i++){
+        //<100, <90, <80, <70, <60の順でそれぞれの点数を確認していき
+        //最終的には, 適切な成績が成績を表示するテキスト部分のvalueに入っている
+			 if(pE < 100-10*i){	document.tstform.credit_E.value = CD[i];}
+			 if(pM < 100-10*i){document.tstform.credit_M.value = CD[i];}
+      }
+      //平均を求めコメントを決める
+      document.tstform.tresult.value = (pE + pM)/2;
+      if (document.tstform.tresult.value < 60) {
+        document.tstform.tcmnt.value = "頑張らないと単位がとれないですよ";
+      } else if (document.tstform.tresult.value < 80) {
+        document.tstform.tcmnt.value = "もう少し頑張りましょう";
+      } else {
+        document.tstform.tcmnt.value = "よくできました";
+      }
+   }
+}
+		//-->
+  </script>
+ </head>
+
+ <body onload = "scrclr ( )">
+  <form name = "tstform">
+    英語の点数：<input type = "text" name = "english" size = 3>点
+    数学の点数：<input type = "text" name = "mathmatics" size = 3>点
+  <input type = "button" onclick = "cave()" value = "平均計算">
+  <input type = "button" onclick = "scrclr ()" value = "キャンセル">
+  <p>
+   あなたの平均点は，<input type = "text" name = "tresult" size = 3>です．
+  <br>
+   コメント：<input type = "text" name = "tcmnt" size = 60>
+	<br>
+		英語: <input type="text" name="credit_E" size=2>
+		数学: <input type="text" name="credit_M" size=2>
+  </form>
+ </body>
+
+</html>

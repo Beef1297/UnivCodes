@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>課題1-2</title>
+    <script type = "text/javascript">
+      <!--
+      var str = new String(prompt("何か文字列を入力","大学電気通信大学通信大学電気"));
+      var key = new String(prompt("キーワードを入力","大学"));
+      var nstr = new Array();
+      var iex,i = 0,num=0;
+      document.writeln("入力文字列"+str+"キーワード:"+key+"<br>");
+      /*文字列をそれぞれ入力してもらう*/
+      while((iex = str.indexOf(key,i)) != -1){
+      nstr[num] =str.substring(i, iex)
+      num++;
+      i = iex + key.length;
+      }
+      /*キーワードを見つからなくなるまでwhile文を回す. 見つかった位置までの文字列をsubstringで抽出して,キーワードの次の文字位置にiをセットして重複を防ぐ,抽出した文字列は配列で管理*/
+      nstr[num] = str.substring(i, str.length);
+      document.writeln("キーワードの数: "+num+"<br> 新しい文字列:");
+      /*それぞれの文字列を表示していく*/
+      for(i=0;i<=num;i++){
+      document.write(nstr[i]);
+      }
+      //-->
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

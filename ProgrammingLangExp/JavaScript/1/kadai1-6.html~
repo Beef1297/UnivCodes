@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>kadai1-6</title>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+  var timer = null;
+  var n = 0;
+  function slide(){
+    swith(n){
+      case 0: document.images["myImg1"].src = "img1.png";
+      break;
+      case 1: document.images["myImg1"].src = "img2.png";
+      break;
+      case 2: document.images["myImg1"].src = "img3.png";
+      break;
+    }
+    n = (n+1)%3;
+  }
+  document.write("<button type=button onclick= ''start</button>");
+  document.write('<img src = "img1.png" name = "myImg1">');
+
+  -->
+  </script>
+</body>
+</html>

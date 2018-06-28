@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8"/>
+			<title>kadai</title>
+			<style type="text/css">
+				</style>
+			<script type="text/javascript">
+				function movePage(){
+				//やってることはkadai3-3と同じだが
+				//遷移先が自分で作ったページになってる.
+				var selected = document.multimenu.multi.selectedIndex;
+				if(selected > 0)
+				// >0 にしないとメニューの名前まで含まれてしまうため
+				//何も起こらない状態になってしまう可能性がある
+				window.open(document.multimenu.multi.options[selected].value);
+				}
+				</script>
+		</head>
+		<body>
+			<form name="multimenu">
+				<select name="multi" onchange="movePage()">
+					<option>機能リスト
+					<option value="kadai3-5-1.html">ブックマーク集
+					<option value="kadai3-5-2.html">2018年の残り時間
+					<option value="kadai3-5-3.html">背景色自動変更
+				</select>
+			</form>
+		</body>
+	</html>
+

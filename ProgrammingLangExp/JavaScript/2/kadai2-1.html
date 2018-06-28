@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset = "utf-8"/>
+    <title>kadai2-1</title>
+    <style type="text/css">
+      td{ text-text-align: left; padding: 0.4em; border: solid 1px black }
+      th  { font-weight: normal; text-align: center; padding: 0.4em; background:#f0f0f0 }
+      table{ text-align: center; letter-spacing: 0.05em; margin: 20px; border-collapse: collapse }
+    </style>
+  </head>
+  <body>
+    <script type="text/javascript">
+     <!--
+
+	 
+      var th,se,fir,i = 0;
+      var flag = false;
+      /*table に関してはkadai1-3と同じようにし,色が変わるところは
+      値が3つ同じ場合flagをtrueにして,それに応じて,setcol()でredを返すかblackを返すか判断する.*/
+      document.write("<table border = 1><th>8^2の位</th><th>8^1の位</th><th>8^0の位</th>");
+      for(i=0;i < 50;i++){
+      flag = false;
+      th = Math.floor(Math.random()*8);
+      se = Math.floor(Math.random()*8);
+      fir = Math.floor(Math.random()*8);
+      if(th == se && se == fir)flag = true;
+      document.write("<tr><td><font color= "+setcol()+">"+th+"</font></td><td><font color="+setcol()+">"+se+"</font></td><td><font color="+setcol()+">"+fir+"</font></td></tr>");
+      }
+      document.write("</table>");
+      function setcol(){
+      if(flag)return "red";
+      else return "black";
+      }
+       -->
+      </script>
+  </body>
+</html>

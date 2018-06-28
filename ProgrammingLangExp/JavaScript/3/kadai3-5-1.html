@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8"/>
+			<title>kadai</title>
+			<style type="text/css">
+				</style>
+			<script type="text/javascript">
+				function move(){
+				var slctd = document.bkmkmenu.bkmks.selectedIndex;
+				if(slctd > 0){
+					//kadai3-3を参考にして同じように書いた。
+					 location = (document.bkmkmenu.bkmks.options[slctd].value);
+				}
+				}
+				</script>
+		</head>
+		<body>
+			<form name="bkmkmenu">
+				<select name="bkmks" onchange="move()">
+					<option>ブックマーク集
+					<option value="http://www.tohoho-web.com/wwwbeg.htm">とほほのWWW入門
+					<option value="http://www.kanzaki.com/docs/htminfo.html">ごく簡単なHTML入門
+					<option value="http://www.htmq.com/">HTMLクイックリファレンス
+					<option value="https://www.yahoo.co.jp/">YAHOO! JAPAN
+					<option value="https://www.biglobe.ne.jp/">BIGLOBE
+				</select>
+				<p>
+				<input type="button" value="ページを閉じる" onmousedown="window.close()">
+				<!--closeをどのようにするか迷った。通常はwindow.closeでは閉じられないが、他のページから遷移してきたときはwindow.closeで消せるため
+					window.close()を選んだ-->
+				</p>
+			</form>
+		</body>
+	</html>
+

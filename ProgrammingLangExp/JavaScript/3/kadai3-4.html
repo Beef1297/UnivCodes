@@ -1,0 +1,32 @@
+<html>
+ <head>
+	 <meta charset="utf-8"/>
+	 <title>kadai3-4</title>
+  <script type="text/javascript">
+	<!--
+   function chgclr() {
+    for (i=0; i<document.colors.color.length; i++) {
+        if (document.colors.elements[i].checked) {
+          //チェックされている要素があったらif文の中に入り,idからtextの色を変更する
+          //色を変更するには, 色の文字列を代入すればよいからそれぞれのinput のvalueは文字列になっている
+          document.getElementById("txt").style.color = document.colors.elements[i].value;
+        }
+      }
+  }
+	 //-->
+  </script>
+ </head>
+ <body>
+	 <div id="txt" style="color:black">■■■■■</div>
+	 <p>
+  <form name = "colors" >
+   <input type = "radio" name = "color" value = "red"  >赤
+   <input type = "radio" name = "color" value = "blue"   >青
+   <input type = "radio" name = "color" value = "yellow"  >黃
+   <input type = "radio" name = "color" value = "black"   >黒
+   <input type = "radio" name = "color" value = "green"  >緑
+	 <br>
+	 <input type = "button" value = "change the color" onclick = "chgclr()">
+  </form>
+ </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>kadai2-6</title>
+    <script type="text/javascript">
+		<!--	
+			//cookieの保持時間を定義
+			var cook = document.cookie;
+			var presentDay = new Date();
+			var dd = presentDay.getSeconds();
+			dd += 7;
+			presentDay.setDate(dd);
+			var expTime = presentDay.toGMTString();
+			/*************************/
+			function check_cookie(){
+			//初回の場合
+			if(cook==""){
+				var name = prompt("氏名を入力してください");
+				var hobby = prompt("趣味を入力してください");
+				var data1 = "userName="+escape(name)+";";
+				var data2 = "userHobby="+escape(hobby)+";";
+				var data3 = "visited_num="+escape(1)+";";
+				document.cookie = data1+"expires="+expTime;
+				document.cookie = data2+"expires="+expTime;
+				document.cookie = data3+"expires="+expTime;
+				//二回目以降
+			}else{
+				var unescook = unescape(cook);
+				console.log(unescook);
+
+				var pos_visit = unescook.indexOf("visited_num=");
+				var pos_name = unescook.indexOf("userName=");
+				var pos_hob = unescook.indexOf("userHobby=");
+				userName = extract_elem(unescook,pos_name+9);//9は userName=の文字数
+				userHobby = extract_elem(unescook,pos_hob+10);//10 上と同じこと
+				visited_num = extract_elem(unescook,pos_visit+12);//12visited_num=のこと
+				//要素を抽出する
+				var num = parseInt(visited_num)+1;
+				//console.log(num,userName,userHobby);
+				var data = "visited_num="+escape(num)+";";
+				document.cookie = data+"expires="+expTime;
+
+				document.getElementById("name").innerText = userName;
+				document.getElementById("hobby").innerText = userHobby;
+				document.getElementById("changehobby").innerHTML = "<button onclick='changeHobby()'>趣味を変える</button>";
+				document.getElementById("number").innerText = num;//+1した値を表示したいからnumを代入する
+			}
+			}
+			function extract_elem(unescook, pos){//posにはelementの最初の位置が渡される
+				var semicolon = unescook.indexOf(";",pos);
+				if(semicolon < 0){
+					return ret = unescook.substring(pos,unescook.length);
+				}else{
+					return ret = unescook.substring(pos,semicolon);
+				}
+			}
+
+			function changeHobby(){
+				//趣味を変えるとuserHobbyの場所が変わるため、;までとかではだめだということが分かった
+				var newhobby = prompt("新しい趣味を入力してください");
+				var data = "userHobby="+escape(newhobby)+";";
+				document.cookie = data+"expires="+expTime;
+			}
+			-->
+    </script>
+  </head>
+  <body onload="check_cookie()">
+		<p>
+			======ユーザー氏名======
+			<div id="name"></div>
+		</p>
+		<p>
+			========趣味=======
+			<div id="hobby"></div>
+			<div id="changehobby"></div>
+		</p>
+		<p>
+			======あなたが訪れた回数======
+			<div id="number"></div>
+		</p>
+		=======
+  </body>
+</html>

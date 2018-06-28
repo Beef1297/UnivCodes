@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>kadai1-5</title>
+</head>
+<body onload="window.setTimeout(mig(),3000)" >
+  <script type = "text/javascript">
+  <!--
+  var wel = "Welcome to my homepage!".fontsize(15);
+  document.write(wel+"<br>");
+  document.write("This page is automatically moved to IED within 3 seconds.");
+  function mig(){
+    location.href = "http://www.ied.inf.uec.ac.jp/";
+  }
+  -->
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"\>
+	<title>kadaiP4</title>
+	<script type="text/javascript">
+		<!--
+		var newwindow;
+		var win = new Array(5);
+		function createNewWindow(url,n){
+			win[n] = window.open(url,n,"width=400,height=600"+
+		",location=yes, scrollbars=yes");
+		}
+		function closeWindow(n){
+			win[n].close();
+		}
+		-->
+	</script>
+</head>
+<body>
+	<p>
+		IED
+	<button onclick="createNewWindow('http://www.ied.inf.uec.ac.jp/support/projects/ied-support/wiki',0)">OPEN</button>
+	<button onclick="closeWindow(0)">CLOSE</button>
+	</p>
+	<p>
+		学務情報システム
+		<button onclick="createNewWindow('https://www.uec.ac.jp/campus/academic/',1)">OPEN</button>
+	<button onclick="closeWindow(1)">CLOSE</button>
+	</p>
+	<p>
+		Yahoo!
+		<button onclick="createNewWindow('https://www.yahoo.co.jp/',2)">OPEN</button>
+	<button onclick="closeWindow(2)">CLOSE</button>
+	</p>
+	<p>
+		javascript 参考サイト
+		<button onclick="createNewWindow('http://www.pori2.net/js/window/3.html',3)">OPEN</button>
+	<button onclick="closeWindow(3)">CLOSE</button>
+	</p>
+	<p>	
+		javascript MDN
+		<button onclick="createNewWindow('https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Date',4)">OPEN</button>
+	<button onclick="closeWindow(4)">CLOSE</button>	
+	</p>
+
+</body>
+</html>

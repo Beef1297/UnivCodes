@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>kadai2-5</title>
+    <script type="text/javascript">
+			<!--
+					//pには1か-1が入り移動する分だけforループが周
+					//pを加えて行くことで移動している
+			function stepbystep_By(dy){
+				var p=1; DY = Math.abs(dy);
+				if(dy < 0)p *= -1;
+					for(s=0; s < DY; s++){
+						window.scrollBy(0,p);
+					}		
+			}
+	
+			-->
+    </script>
+  </head>
+  <body>
+		<h1>クレタ島の風景</h1>
+		写真ごとに上下スクロール<br>
+		<img src="imgGreece1.jpg"><br>
+		<button onclick="stepbystep_By(500)">The next photo</button><br>
+		<img src="imgGreece2.jpg"><br>
+		<button onclick="stepbystep_By(-500)">The previous photo</button>
+		<button onclick="stepbystep_By(500)">The next photo</button><br>
+		<img src="imgGreece3.jpg"><br>
+		<button onclick="stepbystep_By(-500)">The previous photo</button><br>
+		<button onclick="stepbystep_By(-1000)">Top</button><br>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>kadai1-5</title>
+</head>
+<!-- 読み込まれたら3000ms後にmig関数を呼び出す-->
+<body onload="window.setTimeout(mig(),3000)" >
+  <script type = "text/javascript">
+  <!--
+      /*.fontsize()で文字列のフォントサイズを変更している.*/
+  var wel = "Welcome to my homepage!".fontsize(15);
+  document.write(wel+"<br>");
+  document.write("This page is automatically moved to IED within 3 seconds.");
+  /*資料より,location.hrefをかえるとURLに飛べるとあったのでそのまま起用*/
+  function mig(){
+    location.href = "http://www.ied.inf.uec.ac.jp/";
+  }
+  -->
+  </script>
+</body>
+</html>

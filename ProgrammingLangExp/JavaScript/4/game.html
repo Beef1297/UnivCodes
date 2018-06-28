@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>最大数はどーれだ</title>
+		<script type="text/javascript">
+			<!--
+					var _maxnum_right_click=0;
+					var _got_point=0;
+					var _timer;
+					var _max_position=0;
+					
+					function manager(){
+						count_down();
+						set_number();
+						console.log(_max_position);
+						console.log(_got_point);
+						console.log(_maxnum_right_click);
+					}
+					
+					function set_number(){
+						var max=0;
+						var rand;
+						for(i=0;i<5;i++){
+							rand =  Math.floor(Math.random()*99+1);
+							if(max < rand){
+								max = rand; _max_position = i+1;
+							}
+							document.forms[0].elements[i].disabled = false;
+							document.forms[0].elements[i].value = rand;
+						}
+					}
+					function check_number(selected){
+						for(i=0;i<5;i++){
+							document.forms[0].elements[i].disabled = true;
+						}
+						if(_max_position == selected){
+							_maxnum_right_click++;
+							// _max_position = selected-1 だが最大数というのを強調したくて _max_positionを採用した
+							_got_point+= parseInt(document.forms[0].elements[_max_position].value);
+						/*
+						if chose collect answer, tried to change the color to red.
+						but I have to back the color to the default in this function,
+						so in the game, the color looks like no change.
+
+							document.forms[0].elements[selected-1].style.backgroundColor = 'red';
+						}else{
+							document.forms[0].elements[selected-1].style.backgroundColor = 'blue';
+						*/
+						}else{
+							_got_point -= parseInt(document.forms[0].elements[selected-1].value);
+						}
+					}
+					function count_down(){
+						var setCountdown=20;
+						var v = parseInt(document.getElementById('parent').value);
+						console.log(document.getElementById('parent').style);
+						if(!isNaN(v)){
+							setCountdown = --v;
+						}
+						console.log(setCountdown);
+						if(setCountdown < 0){//0になってからも1秒間猶予を作る
+							clearInterval(_timer);
+							document.getElementById("result").innerHTML = "正解クリック数" + _maxnum_right_click + "<br>" +
+																		  "獲得ポイント" + _got_point;
+							return;
+						}
+						document.getElementById('parent').value = setCountdown;
+					}
+					
+					function start(){
+						_timer = setInterval(manager, 1000);
+						document.getElementById('parent').disabled = true;
+					}
+			-->
+		</script>
+	</head>
+
+	<body>
+		<p> <input type="button" value="start" id="parent" onclick="start()" style="width:80px;height:50px; font-size:15px"> </p>
+		<form name="g_switch">
+			<input type="button" name="switch1" value="SW1" style="width:80px;height:50px;font-size:20px" onmousedown="check_number(1)">
+			<input type="button" name="switch2" value="SW2" style="width:80px;height:50px;font-size:20px" onmousedown="check_number(2)">
+			<input type="button" name="switch3" value="SW3" style="width:80px;height:50px;font-size:20px" onmousedown="check_number(3)">
+			<input type="button" name="switch4" value="SW4" style="width:80px;height:50px;font-size:20px" onmousedown="check_number(4)">
+			<input type="button" name="switch5" value="SW5" style="width:80px;height:50px;font-size:20px" onmousedown="check_number(5)">
+		</form>
+		<div id="result">
+			<!-- ゲームの結果を表示するためのタグ -->
+		</div>
+	</body>
+</html>
