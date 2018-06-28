@@ -1,12 +1,12 @@
 # UnivCodes
-these are related to Univ assignment
+大学の課題などに関係するコードや、自主的に取り組んだプロジェクトのまとめ
 
 # Java
-the .java files of class and codes of a game I made with my group(/groupP).  
-To play: please, use .jar file.  
+Java を使ってグループでDrop_Number というゲームを作成した。
+そのソースコード  
 
 # ProgrammingLangExp
-codes of the experiment, named "プログラミング言語実験". 
+プログラミング言語実験のソースコード 
 
 # The2ndGradeExecises
 C codes of the 2nd grade class.  
