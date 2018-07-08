@@ -3,7 +3,8 @@
 
 ## Java
 Java を使ってグループでDrop_Number というゲームを作成した。そのソースコード  
-`groupP/kansei/` 以下のファイルが完成形( いつか jar ファイルに... ), `java GameMain` でゲームスタート
+`#groupP/kansei/dropnumber.jar` が最終的なゲーム  
+`java -jar dropnumber.jar` で実行
 
 ## ProgrammingLangExp
 プログラミング言語実験のソースコード  
